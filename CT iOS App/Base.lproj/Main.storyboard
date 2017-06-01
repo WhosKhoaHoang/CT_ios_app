@@ -25,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByY-jr-GUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4743" y="687"/>
+            <point key="canvasLocation" x="-2199" y="1859"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="TI7-ud-R4e">
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKD-09-7wL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4809" y="1449"/>
+            <point key="canvasLocation" x="-4758" y="1191"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tjh-t3-u4P">
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goE-OW-b6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3233" y="2151"/>
+            <point key="canvasLocation" x="-3823" y="2801"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ecr-KQ-yZG">
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jom-9M-9XA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3242" y="687"/>
+            <point key="canvasLocation" x="-3137" y="2963"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f7E-EQ-8zQ">
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9S-hn-Sox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3993" y="1420"/>
+            <point key="canvasLocation" x="-2268" y="2662"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="8Or-kg-gWx">
@@ -169,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16n-aL-dJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3233" y="1420"/>
+            <point key="canvasLocation" x="-2916" y="1859"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OBc-zK-Mht">
@@ -187,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfa-66-x3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2399.1999999999998" y="1419.9400299850076"/>
+            <point key="canvasLocation" x="-3287" y="214"/>
         </scene>
         <!--Home-->
         <scene sceneID="rZq-wI-mzh">
@@ -239,6 +239,16 @@
                     <navigationItem key="navigationItem" title="Home" id="LBr-Zh-7rm"/>
                     <connections>
                         <outlet property="tableView" destination="RpA-Yn-Ev1" id="3tl-eL-6cY"/>
+                        <segue destination="eFh-Ce-Xmj" kind="show" identifier="kbSeg" id="RG8-IY-uEF"/>
+                        <segue destination="qSv-Dy-fC5" kind="show" identifier="doSigSeg" id="tuW-lw-eeo"/>
+                        <segue destination="YKZ-r4-kXn" kind="show" identifier="openStoreCLSeg" id="mGS-uW-1vp"/>
+                        <segue destination="XdG-mJ-elU" kind="show" identifier="officeSupCLSeg" id="BOa-nC-rwq"/>
+                        <segue destination="n96-Js-6pM" kind="show" identifier="yelpRespSeg" id="9eJ-7B-2lM"/>
+                        <segue destination="Mtr-4g-8sd" kind="show" identifier="worksheetsSeg" id="Z9M-rF-QhW"/>
+                        <segue destination="fYj-wo-bBM" kind="show" identifier="invenDbSeg" id="2ha-X5-GZJ"/>
+                        <segue destination="CWz-wM-pu0" kind="show" identifier="techPolSeg" id="KxH-Fc-dfe"/>
+                        <segue destination="b24-mY-hvm" kind="show" identifier="closeStoreCLSeg" id="TL1-yS-aor"/>
+                        <segue destination="Kqe-jg-gkf" kind="show" identifier="custDiaSeg" id="ePK-0s-8Nc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwC-HX-DXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,11 +314,11 @@
             </objects>
             <point key="canvasLocation" x="-1146" y="687"/>
         </scene>
-        <!--Clock-->
+        <!--Schedule-->
         <scene sceneID="B5s-g3-6Dg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UQy-P0-J88" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Clock" id="rvw-J5-FmC"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" id="rvw-J5-FmC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3g6-Ma-Pqp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -342,11 +352,11 @@
             </objects>
             <point key="canvasLocation" x="-111" y="687"/>
         </scene>
-        <!--Box-->
+        <!--Inventory-->
         <scene sceneID="AdH-Ka-BKc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XdJ-zw-dJ9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Box" id="son-rI-daS"/>
+                    <tabBarItem key="tabBarItem" title="Inventory" id="son-rI-daS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ruj-wc-vTN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -380,11 +390,11 @@
             </objects>
             <point key="canvasLocation" x="938" y="687"/>
         </scene>
-        <!--Shield-->
+        <!--KB-->
         <scene sceneID="dK3-mf-uUD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8wX-Bb-uJe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shield" id="HS1-zI-Qei"/>
+                    <tabBarItem key="tabBarItem" title="KB" id="HS1-zI-Qei"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pPt-YX-VHp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

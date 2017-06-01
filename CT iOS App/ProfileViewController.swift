@@ -66,12 +66,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         cell.textLabel?.text = profileMenuItems[indexPath.row]
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textAlignment = .center
-        
         cell.textLabel?.textColor = UIColor.green
         
         cell.backgroundColor = UIColor.black
         
+        //For having dividers span whole screen
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero

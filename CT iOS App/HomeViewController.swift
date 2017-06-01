@@ -14,6 +14,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let homeMenuItems = ["Knowledge Base",
                          "Drop-Off Signature",
+                         "Receive Device Checklist",
+                         "Receive Device Signature",
+                         "Release Device Checklist",
+                         "Release Device Signature",
                          "Opening Store Checklist",
                          "Office Supplies Checklist",
                          "Yelp Response Template",
@@ -33,8 +37,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.tableFooterView = UIView(frame: .zero)
 
         tableView.backgroundColor = UIColor.black
-        
-        print("LOADED HOMEVIEW")
         
     }
 
@@ -65,12 +67,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeItem", for: indexPath)
         
         cell.textLabel?.text = homeMenuItems[indexPath.row]
-        cell.textLabel?.textAlignment = .center
-        
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        cell.textLabel?.textAlignment = .left
         cell.textLabel?.textColor = UIColor.green
         
         cell.backgroundColor = UIColor.black
         
+        //For having dividers span whole screen
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -86,6 +89,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        //Might wanna find a better way to handle these segues. I.e., instead of having segues to a bunch of different 
+        //View Controllers, maybe just segue to one View Controller that takes on content particular to the cell you 
+        //just tapped on?
         switch (indexPath.row) {
         case 0:
             performSegue(withIdentifier: "kbSeg", sender: indexPath)
@@ -104,7 +110,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 7:
             performSegue(withIdentifier: "techPolSeg", sender: indexPath)
         case 8:
-            performSegue(withIdentifier: "closeStoreClSeg", sender: indexPath)
+            performSegue(withIdentifier: "closeStoreCLSeg", sender: indexPath)
         case 9:
             performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
         default:
