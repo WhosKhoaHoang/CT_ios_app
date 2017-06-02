@@ -1,12 +1,18 @@
 PODS:
+  - Alamofire (4.4.0)
   - SwiftSignatureView (2.0.0)
+  - SwiftyDropbox (4.1.2):
+    - Alamofire (~> 4.4.0)
 
 DEPENDENCIES:
   - SwiftSignatureView
+  - SwiftyDropbox
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   SwiftSignatureView: aacf6b4fb9108d79b76af1d3f23a50ff50a0a98f
+  SwiftyDropbox: eb79d166c2850e50eed01c280c7c64b4b69c50a5
 
-PODFILE CHECKSUM: 0905e4c6f9e174d37fa33e91a75a4d49fe0fd6e8
+PODFILE CHECKSUM: 6fd20b57096eb77ec5740419ca9273d709effaea
 
 COCOAPODS: 1.2.1

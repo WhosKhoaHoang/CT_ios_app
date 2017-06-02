@@ -7,4 +7,5 @@ target 'CT iOS App' do
 
   # Pods for CT iOS App
   pod "SwiftSignatureView"
+  pod "SwiftyDropbox"
 end
