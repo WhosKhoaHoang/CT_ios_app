@@ -14,10 +14,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let homeMenuItems = ["Knowledge Base",
                          "Drop-Off Signature",
-                         "Receive Device Checklist",
-                         "Receive Device Signature",
-                         "Release Device Checklist",
-                         "Release Device Signature",
                          "Opening Store Checklist",
                          "Office Supplies Checklist",
                          "Yelp Response Template",
@@ -25,7 +21,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                          "Inventory Database",
                          "Technician Policies",
                          "Closing Store Checklist",
-                         "Customer Dialogue"]
+                         "Customer Dialogue",
+                         "Receive Device Checklist",]
     
     
     override func viewDidLoad() {
@@ -113,6 +110,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             performSegue(withIdentifier: "closeStoreCLSeg", sender: indexPath)
         case 9:
             performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
+        case 10:
+            performSegue(withIdentifier: "receiveDevSig", sender: indexPath)
         default:
             break
         }
