@@ -22,7 +22,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                          "Technician Policies",
                          "Closing Store Checklist",
                          "Customer Dialogue",
-                         "Receive Device Checklist",]
+                         "Receive Device Checklist",
+                         "Release Device Checklist"]
     
     
     override func viewDidLoad() {
@@ -112,6 +113,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
         case 10:
             performSegue(withIdentifier: "receiveDevSig", sender: indexPath)
+        case 11:
+            performSegue(withIdentifier: "releaseDevSig", sender: indexPath)
         default:
             break
         }
