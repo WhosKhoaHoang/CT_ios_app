@@ -22,8 +22,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                          "Technician Policies",
                          "Closing Store Checklist",
                          "Customer Dialogue",
-                         "Receive Device Checklist",
-                         "Release Device Checklist"]
+                         "Receive Device Signature",
+                         "Release Device Signature"]
     
     
     override func viewDidLoad() {
