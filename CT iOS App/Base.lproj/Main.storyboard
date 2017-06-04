@@ -256,7 +256,9 @@
                         <outlet property="cb3" destination="30P-xP-1F2" id="PSb-LE-hr2"/>
                         <outlet property="custNameInput" destination="tOp-z3-Wxi" id="7om-fF-Hew"/>
                         <outlet property="receivedByInput" destination="aFc-1V-04y" id="yV4-5Y-9TW"/>
+                        <outlet property="sigDatePicker" destination="LcG-yq-MQM" id="FvA-TW-MAD"/>
                         <outlet property="signature" destination="7Jz-OE-qDP" id="jHO-IA-y81"/>
+                        <outlet property="submitBtn" destination="8Fn-2s-aoM" id="azz-Ue-7OH"/>
                         <outlet property="theContent" destination="Php-rk-YIA" id="CE5-cu-ek6"/>
                         <outlet property="workOrderNumInput" destination="ohg-iy-Wa8" id="9vt-eq-eu9"/>
                     </connections>
