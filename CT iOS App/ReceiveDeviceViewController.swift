@@ -8,11 +8,10 @@
 
 import UIKit
 import SwiftSignatureView
-
+import SwiftyDropbox
 
 //I think this can actually be a superclass...
 //Instance variables would be as they are below...you'd just control drag from a View Controller?
-
 class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate {
     
     @IBOutlet weak var workOrderNumInput: UITextField!
@@ -23,23 +22,79 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     @IBOutlet weak var signature: SwiftSignatureView!
     @IBOutlet weak var receivedByInput: UITextField!
     @IBOutlet weak var sigDatePicker: UIDatePicker!
+    //^Weird...the date picker isn't displaying properly in the PDF...
+    
     @IBOutlet weak var theContent: UIView!
     //^This is for the PDF
+    
     @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var authorizeBtn: UIButton!
+    
+    
+    
+    @IBAction func authorizeDropbox(_ sender: Any) {
+        
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                        UIApplication.shared.open(url)
+        })
+        
+    }
+    
     
     
     @IBAction func submit(_ sender: Any) {
 
         let errorMsg: String = validateSigPage()
-        
         if (errorMsg != "") {
             createAlert(titleText: "Error", msgText: errorMsg)
         }
         else {
-            print("TO THE DROPBOX!")
+            let pdfData: Data = makePdfOfCurrentPage()
+            uploadPageToDropbox(data: pdfData, workOrderNum: "123") //HARDED-CODED WORK ORDER NUMBER
+            //uploadPageToDropbox(data: pdfData, workOrderNum: workOrderNumInput.text)
         }
         
     }
+    
+    
+    
+    func makePdfOfCurrentPage()->Data {
+        
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, theContent.bounds, nil)
+        UIGraphicsBeginPDFPage()
+        
+        //guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
+        let pdfContext = UIGraphicsGetCurrentContext()
+        
+        theContent.layer.render(in: pdfContext!)
+        UIGraphicsEndPDFContext()
+        
+        return pdfData as Data
+    }
+    
+    
+    
+    func uploadPageToDropbox(data: Data, workOrderNum: String) {
+        
+        let client = DropboxClientsManager.authorizedClient
+        let request = client?.files.upload(path: "/work_order"+workOrderNum+".pdf", input: data as Data)
+            .response { response, error in
+                if let response = response {
+                    print("MADE IT!")
+                    print(response)
+                } else if let error = error {
+                    print("ERROR!")
+                    print(error)
+                }
+            }
+            .progress { progressData in
+                print(progressData)
+        }
+    }
+    
     
     
     func validateSigPage()->String {
@@ -80,6 +135,7 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     }
     
     
+    
     func createAlert(titleText: String, msgText: String) {
         
         let alert = UIAlertController(title: titleText, message: msgText, preferredStyle: .alert)
@@ -93,7 +149,6 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,7 +156,11 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
         submitBtn.layer.cornerRadius = 5
         //submitBtn.layer.borderWidth = 1
         //submitBtn.layer.borderColor = UIColor.black.cgColor
+        
+        authorizeBtn.layer.cornerRadius = 5
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -109,10 +168,12 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     }
     
     
+    
     //MARK: Delegate
     public func swiftSignatureViewDidTapInside(_ view: SwiftSignatureView) {
         //print("Did tap inside")
     }
+    
     
     
     public func swiftSignatureViewDidPanInside(_ view: SwiftSignatureView) {

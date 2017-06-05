@@ -213,8 +213,20 @@
                                                     <!--2017-06-03 05:00:56 +0000-->
                                                 </date>
                                             </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpB-Jo-spo">
+                                                <rect key="frame" x="74" y="935" width="140" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Authorize Dropbox">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="authorizeDropbox:" destination="0bW-CK-pbE" eventType="touchUpInside" id="pRE-rq-d2N"/>
+                                                    <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="8NX-gK-jGJ"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fn-2s-aoM">
-                                                <rect key="frame" x="146" y="936" width="82" height="30"/>
+                                                <rect key="frame" x="249" y="935" width="82" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Submit">
@@ -251,6 +263,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
+                        <outlet property="authorizeBtn" destination="SpB-Jo-spo" id="WYP-Cn-2W0"/>
                         <outlet property="cb1" destination="iMT-zp-rmE" id="Coh-ED-9sp"/>
                         <outlet property="cb2" destination="XrJ-f4-EiD" id="st0-2B-mpV"/>
                         <outlet property="cb3" destination="30P-xP-1F2" id="PSb-LE-hr2"/>
