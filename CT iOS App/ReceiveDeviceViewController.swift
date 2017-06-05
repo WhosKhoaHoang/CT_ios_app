@@ -12,15 +12,18 @@ import SwiftyDropbox
 
 //I think this can actually be a superclass...
 //Instance variables would be as they are below...you'd just control drag from a View Controller?
-class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate {
+class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate {
     
     @IBOutlet weak var workOrderNumInput: UITextField!
     @IBOutlet weak var cb1: CheckBoxView!
     @IBOutlet weak var cb2: CheckBoxView!
     @IBOutlet weak var cb3: CheckBoxView!
     @IBOutlet weak var custNameInput: UITextField!
+    
     @IBOutlet weak var signature: SwiftSignatureView!
-    @IBOutlet weak var receivedByInput: UITextField!
+    
+    
+    @IBOutlet weak var recOrRelByInput: UITextField!
     @IBOutlet weak var sigDatePicker: UIDatePicker!
     //^Weird...the date picker isn't displaying properly in the PDF...
     
@@ -44,8 +47,9 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     
     
     
+    
     @IBAction func submit(_ sender: Any) {
-
+        
         let errorMsg: String = validateSigPage()
         if (errorMsg != "") {
             createAlert(titleText: "Error", msgText: errorMsg)
@@ -80,7 +84,7 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
     func uploadPageToDropbox(data: Data, workOrderNum: String) {
         
         let client = DropboxClientsManager.authorizedClient
-        let request = client?.files.upload(path: "/work_order"+workOrderNum+".pdf", input: data as Data)
+        let request = client?.files.upload(path: "/"+self.restorationIdentifier!+"_work_order"+workOrderNum+".pdf", input: data as Data)
             .response { response, error in
                 if let response = response {
                     print("MADE IT!")
@@ -122,8 +126,17 @@ class ReceiveDeviceViewController: UIViewController, SwiftSignatureViewDelegate 
             errorMsg += ". Please provide customer's signature\n"
         }
         
-        if (receivedByInput.text == "") {
-            errorMsg += ". Please specify who received the signature\n"
+        if (recOrRelByInput.text == "") {
+            
+            if (self.restorationIdentifier == "receive_sig") {
+            
+            errorMsg += ". Please specify who received the device\n"
+            }
+            else if (self.restorationIdentifier == "release_sig") {
+                
+                errorMsg += ". Please specify who released the device\n"
+                
+            }
         }
         
         if (sigDate != curDate) {
