@@ -11,7 +11,7 @@
 		D07433741EE3BE7D00B03E44 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */; };
 		D07433761EE3BEAC00B03E44 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = D07433751EE3BEAC00B03E44 /* small-check.png */; };
 		D07433781EE3BEB200B03E44 /* small-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07433771EE3BEB200B03E44 /* small-check@2x.png */; };
-		D074337C1EE3D46800B03E44 /* ReceiveDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074337B1EE3D46800B03E44 /* ReceiveDeviceViewController.swift */; };
+		D074337C1EE3D46800B03E44 /* SignaturePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */; };
 		D0D3E1D01EDA69820003CE28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */; };
 		D0D3E1F01EDB9E4C0003CE28 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */; };
 		D0EC79B51ED910430055BA39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EC79B41ED910430055BA39 /* AppDelegate.swift */; };
@@ -24,7 +24,7 @@
 		D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		D07433751EE3BEAC00B03E44 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check.png"; sourceTree = "<group>"; };
 		D07433771EE3BEB200B03E44 /* small-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check@2x.png"; sourceTree = "<group>"; };
-		D074337B1EE3D46800B03E44 /* ReceiveDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveDeviceViewController.swift; sourceTree = "<group>"; };
+		D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignaturePageViewController.swift; sourceTree = "<group>"; };
 		D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0EC79B11ED910430055BA39 /* CT iOS App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CT iOS App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +83,7 @@
 				D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */,
 				D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */,
 				D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */,
-				D074337B1EE3D46800B03E44 /* ReceiveDeviceViewController.swift */,
+				D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */,
 				D0EC79B81ED910430055BA39 /* Main.storyboard */,
 				D0EC79BB1ED910430055BA39 /* Assets.xcassets */,
 				D0EC79BD1ED910430055BA39 /* LaunchScreen.storyboard */,
@@ -232,7 +232,7 @@
 				D0D3E1F01EDB9E4C0003CE28 /* ProfileViewController.swift in Sources */,
 				D0D3E1D01EDA69820003CE28 /* HomeViewController.swift in Sources */,
 				D07433741EE3BE7D00B03E44 /* CheckBoxView.swift in Sources */,
-				D074337C1EE3D46800B03E44 /* ReceiveDeviceViewController.swift in Sources */,
+				D074337C1EE3D46800B03E44 /* SignaturePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

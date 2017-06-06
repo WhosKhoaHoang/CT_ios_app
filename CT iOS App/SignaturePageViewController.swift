@@ -22,7 +22,6 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
     
     @IBOutlet weak var signature: SwiftSignatureView!
     
-    
     @IBOutlet weak var recOrRelByInput: UITextField!
     @IBOutlet weak var sigDatePicker: UIDatePicker!
     //^Weird...the date picker isn't displaying properly in the PDF...
@@ -171,6 +170,8 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         //submitBtn.layer.borderColor = UIColor.black.cgColor
         
         authorizeBtn.layer.cornerRadius = 5
+        
+        //cb1.layer.borderWidth = 1
     }
     
     

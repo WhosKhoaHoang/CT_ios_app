@@ -12,18 +12,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
-    let homeMenuItems = ["Knowledge Base",
-                         "Drop-Off Signature",
-                         "Opening Store Checklist",
-                         "Office Supplies Checklist",
-                         "Yelp Response Template",
-                         "Worksheets",
-                         "Inventory Database",
-                         "Technician Policies",
-                         "Closing Store Checklist",
-                         "Customer Dialogue",
-                         "Receive Device Signature",
-                         "Release Device Signature"]
+    let homeMenuItems = ["\tKnowledge Base",
+                         "\tDrop-Off Signature",
+                         "\tOpening Store Checklist",
+                         "\tOffice Supplies Checklist",
+                         "\tYelp Response Template",
+                         "\tWorksheets",
+                         "\tInventory Database",
+                         "\tTechnician Policies",
+                         "\tClosing Store Checklist",
+                         "\tCustomer Dialogue",
+                         "\tReceive Device Signature",
+                         "\tRelease Device Signature"]
     
     
     override func viewDidLoad() {

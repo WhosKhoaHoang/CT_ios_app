@@ -32,17 +32,13 @@ class CheckBoxView: UIView {
     func setup() {
         
         //make a border
-        //self.layer.borderWidth = 1.0
-        //Weird, this is also making the Content View have a borderWidth...
-        
+        self.layer.borderWidth = 1.0
         self.isUserInteractionEnabled = true
         
-        //self.checkBoxImageView.frame = CGRectMake(2,2,25,25)
         self.checkBoxImageView.frame = CGRect(origin: CGPoint(x: 2, y: 2), size: CGSize(width: 25, height: 25))
         self.addSubview(self.checkBoxImageView)
         
         
-        //let selector: Selector = Selector(("checkBoxTapped"))
         let selector: Selector = #selector(CheckBoxView.checkBoxTapped)
         //checkBoxTapped is called when a checkbox is selected
         
