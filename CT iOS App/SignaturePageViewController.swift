@@ -14,60 +14,70 @@ import SwiftyDropbox
 //Instance variables would be as they are below...you'd just control drag from a View Controller?
 class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate {
     
+    @IBOutlet weak var theContent: UIView!
+    //^This is for the PDF
+    
     @IBOutlet weak var workOrderNumInput: UITextField!
     @IBOutlet weak var cb1: CheckBoxView!
     @IBOutlet weak var cb2: CheckBoxView!
     @IBOutlet weak var cb3: CheckBoxView!
     @IBOutlet weak var custNameInput: UITextField!
-    
     @IBOutlet weak var signature: SwiftSignatureView!
-    
     @IBOutlet weak var recOrRelByInput: UITextField!
-    @IBOutlet weak var sigDatePicker: UIDatePicker!
-    //^Weird...the date picker isn't displaying properly in the PDF...DELETE THIS!!
-    
     @IBOutlet weak var dateLabel: UILabel!
     
-    
-    
-    
-    @IBOutlet weak var theContent: UIView!
-    //^This is for the PDF
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var submitBtn: UIButton!
-    @IBOutlet weak var authorizeBtn: UIButton!
+    @IBOutlet weak var loginToDropboxPrompt: UIView!
+    @IBOutlet weak var loginAuthorizeDropboxLabel: UILabel!
     
     
     
-    @IBAction func authorizeDropbox(_ sender: Any) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        DropboxClientsManager.authorizeFromController(UIApplication.shared,
-                                                      controller: self,
-                                                      openURL: { (url: URL) -> Void in
-                                                        UIApplication.shared.open(url)
-        })
+        if (DropboxClientsManager.authorizedClient == nil) {
+            submitBtn.isEnabled = false
+            submitBtn.alpha = 0.5
+            
+        }
+        else {
+            submitBtn.isEnabled = true
+            submitBtn.alpha = 1.0
+            loginToDropboxPrompt.isHidden = true
+        }
+        
         
     }
     
     
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     
     @IBAction func submit(_ sender: Any) {
-        
-        
-        //createAlert(titleText: "Success!", msgText: "Signature page has been seent to Dropbox.")
+
         
         let errorMsg: String = validateSigPage()
         if (errorMsg != "") {
-            createAlert(titleText: "Error", msgText: errorMsg)
+            createAlert(titleText: "Form Error", msgText: errorMsg)
         }
         else {
+            
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            
             let pdfData: Data = makePdfOfCurrentPage()
             //uploadPageToDropbox(data: pdfData, workOrderNum: "123") //HARD-CODED WORK ORDER NUMBER
             uploadPageToDropbox(data: pdfData, workOrderNum: workOrderNumInput.text!)
             
-            createAlert(titleText: "Success", msgText: "Signature page has been sent to Dropbox.")
+            
+            //createAlert(titleText: "Success", msgText: "Signature page has been sent to Dropbox.")
         }
+        
     }
     
     
@@ -99,22 +109,33 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         recOrRelByInput.text = ""
     }
     
+    
+    
     func uploadPageToDropbox(data: Data, workOrderNum: String) {
         
         let client = DropboxClientsManager.authorizedClient
+        
         let request = client?.files.upload(path: "/" + self.restorationIdentifier! + "_work_order" + workOrderNum + ".pdf", input: data as Data)
             .response { response, error in
                 if let response = response {
-                    print("MADE IT!")
-                    print(response)
+                    //print(response)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.createAlert(titleText: "Success", msgText: "Signature page has been sent to Dropbox.")
+                    }
+                    
                 } else if let error = error {
-                    print("ERROR!")
-                    print(error)
+                    //print(error)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.createAlert(titleText: "Client Error", msgText: "Please re-authenticate the Dropbox connection.")
+                    }
                 }
             }
             .progress { progressData in
                 print(progressData)
         }
+        
     }
     
     
@@ -165,7 +186,11 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         let alert = UIAlertController(title: titleText, message: msgText, preferredStyle: .alert)
         
         
-        if (titleText == "Error") {
+        if (titleText == "Client Error") {
+            alert.addAction(UIAlertAction(title: "Reauthenticate", style: .default, handler: { (action) in self.openDropboxLoginAuth()
+            }))
+        }
+        else if (titleText == "Form Error") {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in alert.dismiss(animated: true, completion: nil)
             }))
         }
@@ -181,21 +206,22 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
     }
     
     
-    /*
-    func createAlertFromSubmit(titleText: String, msgText: String) {
-        
-        let alert = UIAlertController(title: titleText, message: msgText, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Go Back", style: .default, handler: { (action) in self.navigationController?.popViewController(animated: true)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Clear Page", style: .default, handler: { (action) in self.clearPage()
-        }))
-        
-        
-        self.present(alert, animated: true, completion: nil)
+
+    func loginAuthorizeDropbox(sender:UITapGestureRecognizer) {
+        //print("tap working")
+        openDropboxLoginAuth()
     }
-    */
+    
+    
+    
+    func openDropboxLoginAuth() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                                                      controller: self,
+                                                      openURL: { (url: URL) -> Void in
+                                                        UIApplication.shared.open(url)
+        })
+    }
+
     
     
     override func viewDidLoad() {
@@ -204,27 +230,21 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         // Do any additional setup after loading the view.
         submitBtn.layer.cornerRadius = 5
         //submitBtn.layer.borderWidth = 1
-        //submitBtn.layer.borderColor = UIColor.black.cgColor
-        
-        authorizeBtn.layer.cornerRadius = 5
-        
-        //cb1.layer.borderWidth = 1
-        
         
         //Fill out today's date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M / d / yy"
-
         let curDate = dateFormatter.string(from: Date())
-        
         dateLabel.text = curDate
-    }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.loginAuthorizeDropbox))
+        loginAuthorizeDropboxLabel.isUserInteractionEnabled = true
+        loginAuthorizeDropboxLabel.addGestureRecognizer(tap)
+        
+        
+        //print("LOADED!") //FOR TESTING
+        activityIndicator.isHidden = true
     }
     
     

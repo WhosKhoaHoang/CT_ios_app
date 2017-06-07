@@ -354,21 +354,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tip-Pd-L4j">
                                                 <rect key="frame" x="87" y="940" width="240" height="87"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpB-Jo-spo">
-                                                        <rect key="frame" x="50" y="8" width="140" height="31"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="Authorize Dropbox">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="authorizeDropbox:" destination="0bW-CK-pbE" eventType="touchUpInside" id="pRE-rq-d2N"/>
-                                                            <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="8NX-gK-jGJ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fn-2s-aoM">
-                                                        <rect key="frame" x="79" y="49" width="82" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Fn-2s-aoM">
+                                                        <rect key="frame" x="79" y="8" width="82" height="36.666666666666742"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Submit">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -377,13 +364,56 @@
                                                             <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="RcK-oN-RXV"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYQ-eB-z4n">
+                                                        <rect key="frame" x="6.6666666666666714" y="45.666666666666742" width="227" height="47.333333333333258"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not logged in to Dropbox!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6G-YU-iZ4">
+                                                                <rect key="frame" x="18" y="8" width="190" height="14.333333333333258"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login and authorize Dropbox here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsX-NH-zvu">
+                                                                <rect key="frame" x="16" y="25" width="192" height="14.333333333333258"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="u6G-YU-iZ4" secondAttribute="bottom" constant="25" id="EGb-hR-ZwO"/>
+                                                            <constraint firstItem="fsX-NH-zvu" firstAttribute="top" secondItem="TYQ-eB-z4n" secondAttribute="top" constant="25" id="XQK-Si-Met"/>
+                                                            <constraint firstItem="u6G-YU-iZ4" firstAttribute="leading" secondItem="TYQ-eB-z4n" secondAttribute="leading" constant="18" id="nRf-XF-5iz"/>
+                                                            <constraint firstItem="fsX-NH-zvu" firstAttribute="leading" secondItem="TYQ-eB-z4n" secondAttribute="leading" constant="16" id="qhR-sf-T1l"/>
+                                                            <constraint firstAttribute="bottom" secondItem="fsX-NH-zvu" secondAttribute="bottom" constant="8" id="rw6-Ea-W9Z"/>
+                                                            <constraint firstAttribute="trailing" secondItem="fsX-NH-zvu" secondAttribute="trailing" constant="19" id="srf-f6-5NK"/>
+                                                            <constraint firstAttribute="trailing" secondItem="u6G-YU-iZ4" secondAttribute="trailing" constant="19" id="tpH-bh-myE"/>
+                                                            <constraint firstItem="u6G-YU-iZ4" firstAttribute="top" secondItem="TYQ-eB-z4n" secondAttribute="top" constant="8" id="wfg-Mi-V2K"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="TYQ-eB-z4n" secondAttribute="bottom" constant="-6" id="0mJ-Oy-UT6"/>
+                                                    <constraint firstItem="8Fn-2s-aoM" firstAttribute="leading" secondItem="Tip-Pd-L4j" secondAttribute="leading" constant="79" id="8Xg-G2-mSS"/>
                                                     <constraint firstAttribute="width" constant="240" id="Qsa-Nw-5v5"/>
+                                                    <constraint firstItem="8Fn-2s-aoM" firstAttribute="top" secondItem="Tip-Pd-L4j" secondAttribute="top" constant="8" id="Tn5-2a-uSL"/>
+                                                    <constraint firstItem="TYQ-eB-z4n" firstAttribute="centerX" secondItem="Tip-Pd-L4j" secondAttribute="centerX" id="Vxl-9Q-4ON"/>
                                                     <constraint firstAttribute="height" constant="87" id="g6o-82-gkM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8Fn-2s-aoM" secondAttribute="trailing" constant="79" id="h3G-8j-anq"/>
+                                                    <constraint firstItem="TYQ-eB-z4n" firstAttribute="top" secondItem="8Fn-2s-aoM" secondAttribute="bottom" constant="1" id="yNo-pC-G2N"/>
                                                 </constraints>
                                             </view>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dnm-k3-Nsq">
+                                                <rect key="frame" x="197" y="920" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="d3v-1U-Vsn"/>
+                                                    <constraint firstAttribute="height" constant="20" id="x11-hJ-ZFO"/>
+                                                </constraints>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -407,6 +437,8 @@
                                             <constraint firstItem="epj-da-JIe" firstAttribute="top" secondItem="cIr-8t-WXg" secondAttribute="bottom" constant="9" id="VYN-YV-7Oe"/>
                                             <constraint firstItem="cIr-8t-WXg" firstAttribute="top" secondItem="a9y-D6-uOt" secondAttribute="bottom" constant="9" id="Vk8-yh-ddU"/>
                                             <constraint firstItem="rr1-nG-1b6" firstAttribute="top" secondItem="CYB-ta-ViW" secondAttribute="bottom" constant="8" id="WKb-P5-8Hi"/>
+                                            <constraint firstItem="Tip-Pd-L4j" firstAttribute="top" secondItem="dnm-k3-Nsq" secondAttribute="bottom" id="WaK-Vg-ela"/>
+                                            <constraint firstItem="dnm-k3-Nsq" firstAttribute="centerX" secondItem="Php-rk-YIA" secondAttribute="centerX" id="Wdf-P1-T2c"/>
                                             <constraint firstItem="fhc-HH-8qa" firstAttribute="centerX" secondItem="Php-rk-YIA" secondAttribute="centerX" id="XF3-9N-FGP"/>
                                             <constraint firstItem="cIr-8t-WXg" firstAttribute="centerX" secondItem="Php-rk-YIA" secondAttribute="centerX" id="YdO-qx-umg"/>
                                             <constraint firstItem="ndB-ce-HC2" firstAttribute="top" secondItem="epj-da-JIe" secondAttribute="bottom" constant="11" id="Ye8-Zn-Quk"/>
@@ -444,12 +476,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
-                        <outlet property="authorizeBtn" destination="SpB-Jo-spo" id="WYP-Cn-2W0"/>
+                        <outlet property="activityIndicator" destination="dnm-k3-Nsq" id="OY3-wf-Ljm"/>
                         <outlet property="cb1" destination="iMT-zp-rmE" id="Coh-ED-9sp"/>
                         <outlet property="cb2" destination="XrJ-f4-EiD" id="st0-2B-mpV"/>
                         <outlet property="cb3" destination="30P-xP-1F2" id="PSb-LE-hr2"/>
                         <outlet property="custNameInput" destination="tOp-z3-Wxi" id="7om-fF-Hew"/>
                         <outlet property="dateLabel" destination="yle-Gj-XMV" id="22s-Yv-45s"/>
+                        <outlet property="loginAuthorizeDropboxLabel" destination="fsX-NH-zvu" id="3WF-sm-h6U"/>
+                        <outlet property="loginToDropboxPrompt" destination="TYQ-eB-z4n" id="Vyj-tH-R7u"/>
                         <outlet property="recOrRelByInput" destination="aFc-1V-04y" id="SfM-e4-UZX"/>
                         <outlet property="signature" destination="7Jz-OE-qDP" id="jHO-IA-y81"/>
                         <outlet property="submitBtn" destination="8Fn-2s-aoM" id="azz-Ue-7OH"/>
@@ -741,21 +775,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-Ka-YeP">
                                                 <rect key="frame" x="87" y="835" width="240" height="87"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeF-NG-Wld">
-                                                        <rect key="frame" x="50" y="11" width="140" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="Authorize Dropbox">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="authorizeDropbox:" destination="G61-No-FiH" eventType="touchUpInside" id="VtJ-wO-Vig"/>
-                                                            <action selector="authorizeDropbox:" destination="0bW-CK-pbE" eventType="touchUpInside" id="ljQ-5i-wz6"/>
-                                                            <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="4ou-TT-ItQ"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpB-4z-dbz">
-                                                        <rect key="frame" x="79" y="49" width="82" height="30"/>
+                                                        <rect key="frame" x="79" y="8" width="82" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Submit">
@@ -766,13 +787,52 @@
                                                             <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="nu7-rY-Oag"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIB-R7-VFY">
+                                                        <rect key="frame" x="7" y="45.666666666666629" width="227" height="47.333333333333371"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not logged in to Dropbox!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTs-hd-oOt">
+                                                                <rect key="frame" x="18" y="8" width="190" height="14.333333333333371"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login and authorize Dropbox here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-n0-Sz2">
+                                                                <rect key="frame" x="16" y="25" width="192" height="21"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="gTs-hd-oOt" secondAttribute="bottom" constant="25" id="2nQ-4n-Z2Z"/>
+                                                            <constraint firstAttribute="bottom" secondItem="bEV-n0-Sz2" secondAttribute="bottom" constant="1.3300000000000001" id="Xi9-g3-rpv"/>
+                                                            <constraint firstItem="gTs-hd-oOt" firstAttribute="leading" secondItem="xIB-R7-VFY" secondAttribute="leading" constant="18" id="e0r-m6-1Yo"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bEV-n0-Sz2" secondAttribute="trailing" constant="19" id="gDP-eh-DZq"/>
+                                                            <constraint firstAttribute="trailing" secondItem="gTs-hd-oOt" secondAttribute="trailing" constant="19" id="hCu-Ef-riD"/>
+                                                            <constraint firstItem="bEV-n0-Sz2" firstAttribute="leading" secondItem="xIB-R7-VFY" secondAttribute="leading" constant="16" id="kTi-GL-GCk"/>
+                                                            <constraint firstItem="bEV-n0-Sz2" firstAttribute="top" secondItem="gTs-hd-oOt" secondAttribute="bottom" constant="2.6699999999999999" id="pKd-Z3-B1s"/>
+                                                            <constraint firstItem="gTs-hd-oOt" firstAttribute="top" secondItem="xIB-R7-VFY" secondAttribute="top" constant="8" id="uNi-Bt-dsq"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="xIB-R7-VFY" firstAttribute="centerX" secondItem="v7E-Ka-YeP" secondAttribute="centerX" id="75P-dY-QWN"/>
                                                     <constraint firstAttribute="width" constant="240" id="CSH-gR-mJw"/>
                                                     <constraint firstAttribute="height" constant="87" id="rri-vB-tgg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xIB-R7-VFY" secondAttribute="bottom" constant="-6" id="ywk-kx-T12"/>
                                                 </constraints>
                                             </view>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qfE-BT-jZe">
+                                                <rect key="frame" x="197" y="816" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="JN1-jG-zyl"/>
+                                                    <constraint firstAttribute="height" constant="20" id="PTA-O3-2Xj"/>
+                                                </constraints>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -788,6 +848,7 @@
                                             <constraint firstItem="6Kg-64-dHO" firstAttribute="leading" secondItem="eqs-n6-VFL" secondAttribute="trailing" constant="11.67" id="HMY-UD-pyf"/>
                                             <constraint firstItem="UJp-nr-pDU" firstAttribute="top" secondItem="Q0X-G3-gUz" secondAttribute="bottom" constant="8" id="Imm-is-eGt"/>
                                             <constraint firstItem="UQC-2N-WcI" firstAttribute="top" secondItem="cVq-N4-VfN" secondAttribute="bottom" constant="8" id="Lvu-G0-tqY"/>
+                                            <constraint firstItem="qfE-BT-jZe" firstAttribute="top" secondItem="Vjq-2T-PDy" secondAttribute="bottom" constant="1" id="MlV-Kq-Q70"/>
                                             <constraint firstItem="A3O-uf-WqW" firstAttribute="leading" secondItem="Ucf-bB-bLD" secondAttribute="leading" id="NHK-7f-Rig"/>
                                             <constraint firstItem="nOC-lk-SUg" firstAttribute="top" secondItem="A3O-uf-WqW" secondAttribute="bottom" constant="11" id="NMT-nN-gS1"/>
                                             <constraint firstItem="v7E-Ka-YeP" firstAttribute="top" secondItem="Vjq-2T-PDy" secondAttribute="bottom" constant="20" id="QUS-M6-n0x"/>
@@ -808,6 +869,7 @@
                                             <constraint firstItem="y0r-Mo-pE4" firstAttribute="centerX" secondItem="Ucf-bB-bLD" secondAttribute="centerX" id="kpk-Qu-AOR"/>
                                             <constraint firstItem="y0r-Mo-pE4" firstAttribute="top" secondItem="UJp-nr-pDU" secondAttribute="bottom" constant="8" id="pUy-CY-HKC"/>
                                             <constraint firstItem="VOV-Dt-u8h" firstAttribute="top" secondItem="L8v-PV-4gI" secondAttribute="bottom" constant="14" id="sho-Ju-BFO"/>
+                                            <constraint firstItem="qfE-BT-jZe" firstAttribute="centerX" secondItem="Ucf-bB-bLD" secondAttribute="centerX" id="wlU-OM-PT8"/>
                                             <constraint firstAttribute="trailing" secondItem="6Kg-64-dHO" secondAttribute="trailing" constant="16" id="ylv-hT-Whd"/>
                                         </constraints>
                                     </view>
@@ -832,12 +894,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1100"/>
                     <connections>
-                        <outlet property="authorizeBtn" destination="CeF-NG-Wld" id="mW5-pe-wah"/>
+                        <outlet property="activityIndicator" destination="qfE-BT-jZe" id="UXY-6m-2ST"/>
                         <outlet property="cb1" destination="K0A-02-RDT" id="gnr-xB-biB"/>
                         <outlet property="cb2" destination="Wrt-sZ-kTT" id="2Xk-Us-AWw"/>
                         <outlet property="cb3" destination="Kju-xE-100" id="1jd-MT-aJJ"/>
                         <outlet property="custNameInput" destination="LKP-PS-76v" id="89c-K4-fVf"/>
                         <outlet property="dateLabel" destination="sis-9G-DCV" id="Aqi-8f-Cre"/>
+                        <outlet property="loginAuthorizeDropboxLabel" destination="bEV-n0-Sz2" id="M6I-ZC-KZs"/>
+                        <outlet property="loginToDropboxPrompt" destination="xIB-R7-VFY" id="TfH-t7-Kqv"/>
                         <outlet property="recOrRelByInput" destination="pZS-qf-C2p" id="xBB-o4-1UX"/>
                         <outlet property="signature" destination="AzX-Gt-4Ip" id="ZoD-VU-Bns"/>
                         <outlet property="submitBtn" destination="OpB-4z-dbz" id="ktc-7I-Koc"/>
@@ -1068,7 +1132,6 @@
         <!--DUMMY 2-->
         <scene sceneID="zsU-1s-Y3l">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yCY-zw-btF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Release Device Signature" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ht9-eL-gFe" userLabel="DUMMY 2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KNk-AR-6Fz"/>
@@ -1402,7 +1465,6 @@
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="authorizeDropbox:" destination="0bW-CK-pbE" eventType="touchUpInside" id="x2H-dd-Xbj"/>
                                                             <action selector="authorizeDropbox:" destination="Ht9-eL-gFe" eventType="touchUpInside" id="zT3-bG-aVJ"/>
                                                             <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="FEf-I4-Wna"/>
                                                         </connections>
@@ -1497,6 +1559,7 @@
                         <outlet property="workOrderNumInput" destination="5q4-BA-6uW" id="2dC-Ck-7cQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yCY-zw-btF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1146.376811594203" y="1992.3913043478262"/>
         </scene>
@@ -1776,7 +1839,6 @@
                                         </state>
                                         <connections>
                                             <action selector="authorizeDropbox:" destination="Ht9-eL-gFe" eventType="touchUpInside" id="6ds-bA-ezp"/>
-                                            <action selector="authorizeDropbox:" destination="0bW-CK-pbE" eventType="touchUpInside" id="huG-aB-Fco"/>
                                             <action selector="submit:" destination="0bW-CK-pbE" eventType="touchUpInside" id="whR-kS-3gE"/>
                                         </connections>
                                     </button>
