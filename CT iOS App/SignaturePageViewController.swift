@@ -123,6 +123,7 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
                     //print(response)
                     DispatchQueue.main.async {
                         self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
                         self.createAlert(titleText: "Success", msgText: "Signature page has been sent to Dropbox.")
                     }
                     
@@ -130,6 +131,7 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
                     //print(error)
                     DispatchQueue.main.async {
                         self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
                         self.createAlert(titleText: "Client Error", msgText: "Please re-authenticate the Dropbox connection.")
                     }
                 }
