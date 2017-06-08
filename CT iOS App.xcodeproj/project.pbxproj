@@ -138,6 +138,7 @@
 				TargetAttributes = {
 					D0EC79B01ED910430055BA39 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = RM33UV5677;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -358,10 +359,14 @@
 			baseConfigurationReference = FD042282D5871F3E9ED3D57A /* Pods-CT iOS App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RM33UV5677;
 				INFOPLIST_FILE = "CT iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KhoaHoang.CT-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -371,10 +376,14 @@
 			baseConfigurationReference = FBF5EB168522670C86A32596 /* Pods-CT iOS App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RM33UV5677;
 				INFOPLIST_FILE = "CT iOS App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KhoaHoang.CT-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

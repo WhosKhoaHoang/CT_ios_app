@@ -10,8 +10,11 @@ import UIKit
 import SwiftSignatureView
 import SwiftyDropbox
 
-//I think this can actually be a superclass...
-//Instance variables would be as they are below...you'd just control drag from a View Controller?
+//For checking if connected to Internet...
+import Foundation
+import SystemConfiguration
+
+
 class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate {
     
     @IBOutlet weak var theContent: UIView!
@@ -60,7 +63,6 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
     
     @IBAction func submit(_ sender: Any) {
 
-        
         let errorMsg: String = validateSigPage()
         if (errorMsg != "") {
             createAlert(titleText: "Form Error", msgText: errorMsg)
@@ -143,38 +145,44 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
     func validateSigPage()->String {
         
         var errorMsg: String = ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/yy"
         
-        if (workOrderNumInput.text == "") {
-            errorMsg += ". Please enter a Work Order #\n"
+        
+        if (!isInternetAvailable()) {
+            errorMsg += "Please connect to the Internet."
         }
+        else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "M/d/yy"
+            
+            if (workOrderNumInput.text == "") {
+                errorMsg += ". Please enter a Work Order #\n"
+            }
 
-        if (!cb1.isChecked || !cb2.isChecked || !cb3.isChecked) {
-            errorMsg += ". Please agree to all the terms\n"
-        }
-        
-        if (custNameInput.text == "") {
-            errorMsg += ". Please enter customer's name\n"
-        }
-        
-        if (signature.signature == nil) {
-            errorMsg += ". Please provide customer's signature\n"
-        }
-        
-        if (recOrRelByInput.text == "") {
-            
-            if (self.restorationIdentifier == "receive_sig") {
-            
-            errorMsg += ". Please specify who received the device\n"
+            if (!cb1.isChecked || !cb2.isChecked || !cb3.isChecked) {
+                errorMsg += ". Please agree to all the terms\n"
             }
-            else if (self.restorationIdentifier == "release_sig") {
+            
+            if (custNameInput.text == "") {
+                errorMsg += ". Please enter customer's name\n"
+            }
+            
+            if (signature.signature == nil) {
+                errorMsg += ". Please provide customer's signature\n"
+            }
+            
+            if (recOrRelByInput.text == "") {
                 
-                errorMsg += ". Please specify who released the device\n"
+                if (self.restorationIdentifier == "receive_sig") {
                 
+                errorMsg += ". Please specify who received the device\n"
+                }
+                else if (self.restorationIdentifier == "release_sig") {
+                    
+                    errorMsg += ". Please specify who released the device\n"
+                    
+                }
             }
         }
-     
         return errorMsg
         
     }
@@ -218,10 +226,38 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         DropboxClientsManager.authorizeFromController(UIApplication.shared,
                                                       controller: self,
                                                       openURL: { (url: URL) -> Void in
-                                                        UIApplication.shared.open(url)
+                                                        if #available(iOS 10.0, *) {
+                                                            UIApplication.shared.open(url)
+                                                        } else {
+                                                            UIApplication.shared.openURL(url)
+                                                        }
         })
     }
 
+    
+    
+    //From https://stackoverflow.com/questions/39558868/check-internet-connection-ios-10
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        return (isReachable && !needsConnection)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -242,8 +278,6 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         loginAuthorizeDropboxLabel.isUserInteractionEnabled = true
         loginAuthorizeDropboxLabel.addGestureRecognizer(tap)
         
-        
-        //print("LOADED!") //FOR TESTING
         activityIndicator.isHidden = true
     }
     
