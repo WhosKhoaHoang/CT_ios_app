@@ -13,7 +13,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     let homeMenuItems = ["\tKnowledge Base",
-                         "\tDrop-Off Signature",
                          "\tOpening Store Checklist",
                          "\tOffice Supplies Checklist",
                          "\tYelp Response Template",
@@ -92,29 +91,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //just tapped on?
         switch (indexPath.row) {
         case 0:
-            performSegue(withIdentifier: "kbSeg", sender: indexPath)
+            //performSegue(withIdentifier: "kbSeg", sender: indexPath)
+            print("Coming Soon")
         case 1:
-            performSegue(withIdentifier: "doSigSeg", sender: indexPath)
+            //performSegue(withIdentifier: "openStoreCLSeg", sender: indexPath)
+            print("Coming Soon")
         case 2:
-            performSegue(withIdentifier: "openStoreCLSeg", sender: indexPath)
+            //performSegue(withIdentifier: "officeSupCLSeg", sender: indexPath)
+            print("Coming Soon")
         case 3:
-            performSegue(withIdentifier: "officeSupCLSeg", sender: indexPath)
+            //performSegue(withIdentifier: "yelpRespSeg", sender: indexPath)
+            print("Coming Soon")
         case 4:
-            performSegue(withIdentifier: "yelpRespSeg", sender: indexPath)
+            //performSegue(withIdentifier: "worksheetsSeg", sender: indexPath)
+            print("Coming Soon")
         case 5:
-            performSegue(withIdentifier: "worksheetsSeg", sender: indexPath)
+            //performSegue(withIdentifier: "invenDbSeg", sender: indexPath)
+            print("Coming Soon")
         case 6:
-            performSegue(withIdentifier: "invenDbSeg", sender: indexPath)
+            //performSegue(withIdentifier: "techPolSeg", sender: indexPath)
+            print("Coming Soon")
         case 7:
-            performSegue(withIdentifier: "techPolSeg", sender: indexPath)
+            //performSegue(withIdentifier: "closeStoreCLSeg", sender: indexPath)
+            print("Coming Soon")
         case 8:
-            performSegue(withIdentifier: "closeStoreCLSeg", sender: indexPath)
+            //performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
+            print("Coming Soon")
         case 9:
-            performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
+            performSegue(withIdentifier: "receiveDevSig", sender: indexPath) //Check
         case 10:
-            performSegue(withIdentifier: "receiveDevSig", sender: indexPath)
-        case 11:
-            performSegue(withIdentifier: "releaseDevSig", sender: indexPath)
+            performSegue(withIdentifier: "releaseDevSig", sender: indexPath) //Check
         default:
             break
         }

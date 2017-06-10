@@ -12,16 +12,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    let profileMenuItems = ["Opening Store Checklist",
-                         "Shipping Procedure",
-                         "Smart Pick-Up Procedure",
-                         "Onsite Phone Repair",
-                         "Customer Procedures",
-                         "Purchasing Procedure",
-                         "Inventory Top Off Procedure",
-                         "Office Supply Checklist",
-                         "Online Marketing",
-                         "Worksheets"]
+    let profileMenuItems = ["\tOpening Store Checklist",
+                         "\tShipping Procedure",
+                         "\tSmart Pick-Up Procedure",
+                         "\tOnsite Phone Repair",
+                         "\tCustomer Procedures",
+                         "\tPurchasing Procedure",
+                         "\tInventory Top Off Procedure",
+                         "\tOffice Supply Checklist",
+                         "\tOnline Marketing",
+                         "\tWorksheets"]
     
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.textLabel?.text = profileMenuItems[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textAlignment = .left
         cell.textLabel?.textColor = UIColor.green
         
         cell.backgroundColor = UIColor.black

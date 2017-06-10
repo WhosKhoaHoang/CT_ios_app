@@ -10,7 +10,6 @@
 		7ED2F47E548B853CC23FC65B /* Pods_CT_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EFD4CA87ABBD087B357A0 /* Pods_CT_iOS_App.framework */; };
 		D07433741EE3BE7D00B03E44 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */; };
 		D07433761EE3BEAC00B03E44 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = D07433751EE3BEAC00B03E44 /* small-check.png */; };
-		D07433781EE3BEB200B03E44 /* small-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07433771EE3BEB200B03E44 /* small-check@2x.png */; };
 		D074337C1EE3D46800B03E44 /* SignaturePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */; };
 		D0D3E1D01EDA69820003CE28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */; };
 		D0D3E1F01EDB9E4C0003CE28 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		D07433751EE3BEAC00B03E44 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check.png"; sourceTree = "<group>"; };
-		D07433771EE3BEB200B03E44 /* small-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check@2x.png"; sourceTree = "<group>"; };
 		D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignaturePageViewController.swift; sourceTree = "<group>"; };
 		D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				D0EC79BB1ED910430055BA39 /* Assets.xcassets */,
 				D0EC79BD1ED910430055BA39 /* LaunchScreen.storyboard */,
 				D07433751EE3BEAC00B03E44 /* small-check.png */,
-				D07433771EE3BEB200B03E44 /* small-check@2x.png */,
 				D0EC79C01ED910430055BA39 /* Info.plist */,
 			);
 			path = "CT iOS App";
@@ -168,7 +165,6 @@
 			files = (
 				D0EC79BF1ED910430055BA39 /* LaunchScreen.storyboard in Resources */,
 				D0EC79BC1ED910430055BA39 /* Assets.xcassets in Resources */,
-				D07433781EE3BEB200B03E44 /* small-check@2x.png in Resources */,
 				D07433761EE3BEAC00B03E44 /* small-check.png in Resources */,
 				D0EC79BA1ED910430055BA39 /* Main.storyboard in Resources */,
 			);

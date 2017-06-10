@@ -117,7 +117,9 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         
         let client = DropboxClientsManager.authorizedClient
         
-        let request = client?.files.upload(path: "/" + self.restorationIdentifier! + "_work_order" + workOrderNum + ".pdf", input: data as Data)
+        var folderName = self.restorationIdentifier == "release_sig" ? "Release Device Signatures" : "Receive Device Signatures"
+        
+        let request = client?.files.upload(path: "/"+folderName+"/" + self.restorationIdentifier! + "_work_order" + workOrderNum + ".pdf", input: data as Data)
             .response { response, error in
                 if let response = response {
                     //print(response)
