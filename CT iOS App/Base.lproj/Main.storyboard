@@ -61,7 +61,7 @@
                         <outlet property="tableView" destination="RpA-Yn-Ev1" id="3tl-eL-6cY"/>
                         <segue destination="0bW-CK-pbE" kind="show" identifier="receiveDevSig" id="ctX-uK-OCC"/>
                         <segue destination="G61-No-FiH" kind="show" identifier="releaseDevSig" id="A3b-ck-WRu"/>
-                        <segue destination="oCm-25-aYp" kind="show" identifier="checklistSeg" id="e3u-Rh-K7P"/>
+                        <segue destination="oCm-25-aYp" kind="show" identifier="checklistSeg" id="oMz-vM-eDH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwC-HX-DXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,7 +459,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Php-rk-YIA" secondAttribute="trailing" id="4w9-Sb-oZh"/>
                                     <constraint firstItem="Php-rk-YIA" firstAttribute="leading" secondItem="aec-RB-Uyc" secondAttribute="leading" id="cjB-4R-eOV"/>
-                                    <constraint firstAttribute="bottom" secondItem="Php-rk-YIA" secondAttribute="bottom" constant="237" id="gHF-Y8-gwq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Php-rk-YIA" secondAttribute="bottom" id="gHF-Y8-gwq"/>
                                     <constraint firstItem="Php-rk-YIA" firstAttribute="top" secondItem="aec-RB-Uyc" secondAttribute="top" id="iUi-xt-y7m"/>
                                     <constraint firstItem="Php-rk-YIA" firstAttribute="width" secondItem="aec-RB-Uyc" secondAttribute="width" id="vcx-Ny-snf"/>
                                 </constraints>
@@ -876,7 +876,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ucf-bB-bLD" firstAttribute="leading" secondItem="7oj-rx-lXt" secondAttribute="leading" id="CA3-Ec-AY2"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ucf-bB-bLD" secondAttribute="bottom" constant="187" id="Eeh-4x-gJw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ucf-bB-bLD" secondAttribute="bottom" constant="20" symbolic="YES" id="Eeh-4x-gJw"/>
                                     <constraint firstAttribute="trailing" secondItem="Ucf-bB-bLD" secondAttribute="trailing" id="RlV-YO-wPL"/>
                                     <constraint firstItem="Ucf-bB-bLD" firstAttribute="top" secondItem="7oj-rx-lXt" secondAttribute="top" id="SAa-Db-Vau"/>
                                     <constraint firstItem="Ucf-bB-bLD" firstAttribute="width" secondItem="7oj-rx-lXt" secondAttribute="width" id="k1n-Zz-fJR"/>
@@ -917,18 +917,41 @@
         <scene sceneID="lFh-hG-VP9">
             <objects>
                 <tableViewController id="oCm-25-aYp" customClass="ChecklistTableViewController" customModule="CT_iOS_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8bo-BF-y52">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="8bo-BF-y52">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="checklistItem" id="Uo8-oL-SYr">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="checklistItem" rowHeight="65" id="Uo8-oL-SYr" customClass="ChecklistItemTableViewCell" customModule="CT_iOS_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uo8-oL-SYr" id="glB-27-G7L">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojf-t4-5kL" customClass="CheckBoxView" customModule="CT_iOS_App" customModuleProvider="target">
+                                            <rect key="frame" x="23" y="16" width="35" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZS-Cr-MDf">
+                                            <rect key="frame" x="72" y="16" width="35" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjO-hC-00c">
+                                            <rect key="frame" x="115" y="16" width="291" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkbox" destination="ojf-t4-5kL" id="EGw-lC-YWn"/>
+                                    <outlet property="checklistItemText" destination="gjO-hC-00c" id="WEz-dr-RRo"/>
+                                    <outlet property="warnImage" destination="pZS-Cr-MDf" id="TLg-rl-ao2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -939,7 +962,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ri-me-l3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="1648"/>
+            <point key="canvasLocation" x="-1462.3188405797102" y="1534.2391304347827"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rKf-Ls-761">

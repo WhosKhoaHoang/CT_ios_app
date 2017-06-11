@@ -9,17 +9,18 @@
 import UIKit
 import SwiftSoup
 
+//TODO: Parse out checklist item text from the HTML...***DONE***
+//TODO: Segue from the checklists to the signature pages!
+
 class ChecklistTableViewController: UITableViewController {
 
     var typeOfChecklist = ""
-    var checkListItems = [Any]()
-    //var arr = ["a", "b", "c"]
+    var checklistItems = [String]()
     
-    var data = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,11 +32,21 @@ class ChecklistTableViewController: UITableViewController {
         //. Put contents of checklist in checklist array
 
         
-        let url = URL(string: "http://localhost/handbook_test/public/api/panel_content/75") //FOR TESTING
+        var panelContentId: Int = Int()
+        
+        if (typeOfChecklist == "receive_device") {
+            panelContentId = 75
+        }
+        else if (typeOfChecklist == "release_device") {
+            panelContentId = 78
+        }
+        
+        //Note that the URL will vary based on what checklist is being viewed!
+        let url = URL(string: "http://localhost/handbook_test/public/api/panel_content/\(panelContentId)")
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             
-            print(data) //FOR TESTING
+            //print(data) //FOR TESTING
             
             if error != nil {
                 print("ERROR")
@@ -52,23 +63,30 @@ class ChecklistTableViewController: UITableViewController {
                             
                             let panelContent:String = myJson["content"] as! String
                             
-                            print(panelContent)
+                            //print(panelContent)
                             
                             let doc = try SwiftSoup.parse(panelContent)
+                            
+                            let checklistTextArr = try doc.select("font").array()
 
+                            var dummy = [String]()
                             
-                            //Parse the checklist items and append them to checkListItems...would I need to use DispatchQueue?
-                            
-                            /*
-                            DispatchQueue.main.async {
-                                let attrStr = try! NSAttributedString(
-                                    data: myStr.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                                    options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                                    documentAttributes: nil)
+                            for text in checklistTextArr {
                                 
-                                //self.tv.attributedText = attrStr
+                                let text = try text.text()
+                                let index = text.index(text.startIndex, offsetBy: 2)
+                                dummy.append(text.substring(from: index))
+                                
                             }
-                            */
+                            
+                            DispatchQueue.main.async {
+                                self.checklistItems = dummy
+                                self.tableView.reloadData()
+                                //I think this needs to be done because I think all the methods associated with building the table might finish before this asynchronous task does. As such, checklistItems would be initially empty and you'd end up with an empty tableView. However, by reloading the data, the tableView is populated with the appropriate contents.
+                                
+                                print(self.checklistItems) //FOR TESTING
+                            }
+                            
                         }
                         
                     } catch {
@@ -78,12 +96,8 @@ class ChecklistTableViewController: UITableViewController {
                 }
             }
         }
-        
+ 
         task.resume()
-        
-        //FOR TESTING
-        checkListItems.append("A")
-        checkListItems.append("B")
         
     }
 
@@ -110,24 +124,58 @@ class ChecklistTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return checkListItems.count
+        return checklistItems.count
     }
 
     
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "checklistItem", for: indexPath)
-
-        // Configure the cell...
-        cell.textLabel?.text = checkListItems[indexPath.row] as! String
-
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "checklistItem", for: indexPath) as! ChecklistItemTableViewCell
 
+        //print(checklistItems[indexPath.row])
+        
+        
+        // Configure the cell...
+        //cell.textLabel?.text = checklistItems[indexPath.row] as! String
+        cell.checklistItemText.text = checklistItems[indexPath.row]
+        
+        
+        if (checklistItems[indexPath.row] == "Receiving Signature.") {
+            cell.checkbox.removeFromSuperview()
+        }
+        
+        /*
+        if (indexPath.row == checklistItems.count-1) {
+            //Take away checkbox for last row
+            
+            //cell.checkbox.tintColor = UIColor.purple
+            //self.tableView.reloadData()
+            
+            cell.checkbox.removeFromSuperview()
+            
+            //Hmm, this is glitchy...
+        }
+        */
+        
+        
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Examine the final cell...
+        if (indexPath.row == checklistItems.count-1) {
+            print("LASTO!!!")
+            //Perform a segue...
+        }
+        
+    }
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
