@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftSoup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyDropbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6C6B36E56C076375A50ABC4326FFB105</key>
+		<key>02AE7F4746D73D0C18FF0F49E8EDF2EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71755E461BF6B3B893A75AC8ABEE1764</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2E7E1E7EB7D2BDE7F2A0720737D55C1</key>
+		<key>BDA08E7A6B4A8D832D41D07097BDD4C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E529A8F07BBE155BDD148B96B112781C</key>
+		<key>E4395E3BD0AD4101F6A11333F6C05F85</key>
 		<dict>
 			<key>primary</key>
 			<true/>

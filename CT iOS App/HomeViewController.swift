@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     let homeMenuItems = ["\tKnowledge Base",
                          "\tOpening Store Checklist",
                          "\tOffice Supplies Checklist",
@@ -21,8 +22,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                          "\tTechnician Policies",
                          "\tClosing Store Checklist",
                          "\tCustomer Dialogue",
+                         "\tReceive Device Checklist",
+                         "\tRelease Device Checklist",
                          "\tReceive Device Signature",
                          "\tRelease Device Signature"]
+    
+    
+    var selection = ""
+    
+    var chosenCellName = ""
     
     
     override func viewDidLoad() {
@@ -64,6 +72,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeItem", for: indexPath)
         
         cell.textLabel?.text = homeMenuItems[indexPath.row]
+        
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cell.textLabel?.textAlignment = .left
         cell.textLabel?.textColor = UIColor.green
@@ -76,53 +85,57 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.layoutMargins = UIEdgeInsets.zero
         
         
-        
         return cell
     }
+    
     
     
     //When user selects a row
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        //So the highlight doesn't stick around
         
-        //Might wanna find a better way to handle these segues. I.e., instead of having segues to a bunch of different 
-        //View Controllers, maybe just segue to one View Controller that takes on content particular to the cell you 
-        //just tapped on?
-        switch (indexPath.row) {
-        case 0:
-            //performSegue(withIdentifier: "kbSeg", sender: indexPath)
-            print("Coming Soon")
-        case 1:
-            //performSegue(withIdentifier: "openStoreCLSeg", sender: indexPath)
-            print("Coming Soon")
-        case 2:
-            //performSegue(withIdentifier: "officeSupCLSeg", sender: indexPath)
-            print("Coming Soon")
-        case 3:
-            //performSegue(withIdentifier: "yelpRespSeg", sender: indexPath)
-            print("Coming Soon")
-        case 4:
-            //performSegue(withIdentifier: "worksheetsSeg", sender: indexPath)
-            print("Coming Soon")
-        case 5:
-            //performSegue(withIdentifier: "invenDbSeg", sender: indexPath)
-            print("Coming Soon")
-        case 6:
-            //performSegue(withIdentifier: "techPolSeg", sender: indexPath)
-            print("Coming Soon")
-        case 7:
-            //performSegue(withIdentifier: "closeStoreCLSeg", sender: indexPath)
-            print("Coming Soon")
-        case 8:
-            //performSegue(withIdentifier: "custDiaSeg", sender: indexPath)
-            print("Coming Soon")
-        case 9:
-            performSegue(withIdentifier: "receiveDevSig", sender: indexPath) //Check
-        case 10:
-            performSegue(withIdentifier: "releaseDevSig", sender: indexPath) //Check
-        default:
-            break
+        
+        //Instead of having segues to a bunch of different View Controllers, maybe just segue to one 
+        //View Controller that takes on content particular to the cell you just tapped on?
+        
+        
+        //Checking selections based on name is more flexible than on row number because the array elements
+        //don't need to be in a specific order in order for segues to occur properly. This would make something
+        //like rearranging elements in the array much easier because then you wouldn't need to also rearrange
+        //the cases to conincide with the new order.
+        selection = homeMenuItems[indexPath.row].trimmingCharacters(in: NSCharacterSet.whitespaces)
+        
+        switch (selection) {
+            
+            case "Knowledge Base":
+                print(selection)
+            case "Opening Store Checklist":
+                print(selection)
+            case "Office Supplies Checklist":
+                print(selection)
+            case "Yelp Response Template":
+                print(selection)
+            case "Worksheets":
+                print(selection)
+            case "Inventory Database":
+                print(selection)
+            case "Technician Policies":
+                print(selection)
+            case "Closing Store Checklist":
+                print(selection)
+            case "Customer Dialogue":
+                print(selection)
+            case "Receive Device Checklist", "Release Device Checklist":
+                performSegue(withIdentifier: "checklistSeg", sender: indexPath) //Check
+            case "Receive Device Signature":
+                performSegue(withIdentifier: "receiveDevSig", sender: indexPath) //Check
+            case "Release Device Signature":
+                performSegue(withIdentifier: "releaseDevSig", sender: indexPath) //Check
+            default:
+                break
+            
         }
         
     }
@@ -134,14 +147,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    /*
+    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        //===== I think this method fires before the actual segue occurs!!!! That would make sense... =====
+        
+        //if (segue.identifier == "checklistSeg")
+        //. Tell the segue.destination what kind of data to populate the checklist with...
+        //. How to tell? Use some sort of data within this class...
+        
+        
+        
+        if (segue.identifier == "checklistSeg") {
+            
+            if let destVC = segue.destination as? ChecklistTableViewController {
+                if (selection == "Receive Device Checklist") {
+                    destVC.typeOfChecklist = "receive_device"
+                }
+                else if (selection == "Release Device Checklist") {
+                    destVC.typeOfChecklist = "release_device"
+                }
+            }
+
+            
+
+        }
+        
+
+        
+        
     }
-    */
+    
 
 }
