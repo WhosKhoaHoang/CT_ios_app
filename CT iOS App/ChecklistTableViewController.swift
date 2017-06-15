@@ -10,7 +10,8 @@ import UIKit
 import SwiftSoup
 
 //TODO: Parse out checklist item text from the HTML...***DONE***
-//TODO: Segue from the checklists to the signature pages!
+//TODO: Segue from the checklists to the signature pages!...***DONE***
+//TODO: Set up the REST API on the GoDaddy servers...***DONE***
 
 class ChecklistTableViewController: UITableViewController {
 
@@ -29,20 +30,24 @@ class ChecklistTableViewController: UITableViewController {
         
         
         //. Parse HTML here
-        //. Put contents of checklist in checklist array
-
+        //. Put contents of checklist in checklistitems array
         
-        var panelContentId: Int = Int()
+        var panelContentCategory: String = String()
+        
+        let apiKey = "gRt31cZl42f61xdPD"
         
         if (typeOfChecklist == "receive_device") {
-            panelContentId = 75
+            panelContentCategory = "new_rpr_dialogue"
         }
         else if (typeOfChecklist == "release_device") {
-            panelContentId = 78
+            panelContentCategory = "pickup_dialogue"
         }
         
         //Note that the URL will vary based on what checklist is being viewed!
-        let url = URL(string: "http://localhost/handbook_test/public/api/panel_content/\(panelContentId)")
+        //Local:
+        //let url = URL(string: "http://localhost/handbook_test/public/api/\(apiKey)/panel_content/\(panelContentCategory)")
+        //Remote:
+        let url = URL(string: "http://iclevertech.com/api/\(apiKey)/panel_content/\(panelContentCategory)")
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             
@@ -56,24 +61,35 @@ class ChecklistTableViewController: UITableViewController {
                     
                     do {
                         //The following line basically says to convert the received data into an array
-                        let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        //let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject //NOT WORKING ON OLDER VERSIONS OF iOS?
+                        
+                        let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as! [[String: AnyObject]]
                         
                         
-                        if let myJson = myJson[0] as? NSDictionary {
+                        //if let myJson = myJson[0] as? NSDictionary { //NOT WORKING ON OLDER VERSIONS OF iOS?
+                        if let myJson = myJson[0] as? [String : Any] {
                             
                             let panelContent:String = myJson["content"] as! String
                             
-                            //print(panelContent)
+                            //print(panelContent) //FOR TESTING
                             
                             let doc = try SwiftSoup.parse(panelContent)
                             
+                            
                             let checklistTextArr = try doc.select("font").array()
 
+                            
+                            //print(checklistTextArr[2...checklistTextArr.count-1]) //FOR TESTING
+                            
+                            
                             var dummy = [String]()
                             
-                            for text in checklistTextArr {
+                            //Note how the array slicing is the way it is to accommodate how stuff was
+                            //written in the Handbook...
+                            for text in checklistTextArr[2...checklistTextArr.count-1] {
                                 
                                 let text = try text.text()
+                                //print(text) //FOR TESTING
                                 let index = text.index(text.startIndex, offsetBy: 2)
                                 dummy.append(text.substring(from: index))
                                 
@@ -84,8 +100,9 @@ class ChecklistTableViewController: UITableViewController {
                                 self.tableView.reloadData()
                                 //I think this needs to be done because I think all the methods associated with building the table might finish before this asynchronous task does. As such, checklistItems would be initially empty and you'd end up with an empty tableView. However, by reloading the data, the tableView is populated with the appropriate contents.
                                 
-                                print(self.checklistItems) //FOR TESTING
+                                //print(self.checklistItems) //FOR TESTING
                             }
+                            
                             
                         }
                         
@@ -100,7 +117,7 @@ class ChecklistTableViewController: UITableViewController {
         task.resume()
         
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
         //print("Type of checklist is \(typeOfChecklist)")
@@ -133,87 +150,57 @@ class ChecklistTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistItem", for: indexPath) as! ChecklistItemTableViewCell
+        
 
-        //print(checklistItems[indexPath.row])
-        
-        
         // Configure the cell...
-        //cell.textLabel?.text = checklistItems[indexPath.row] as! String
         cell.checklistItemText.text = checklistItems[indexPath.row]
         
-        
-        if (checklistItems[indexPath.row] == "Receiving Signature.") {
-            cell.checkbox.removeFromSuperview()
+        if (cell.checklistItemText.text?.range(of:"WARN") != nil) {
+            cell.warn.text = "⚠️"
         }
         
         /*
+         //Hmm, this way is glitchy...
         if (indexPath.row == checklistItems.count-1) {
             //Take away checkbox for last row
-            
-            //cell.checkbox.tintColor = UIColor.purple
-            //self.tableView.reloadData()
-            
+         
             cell.checkbox.removeFromSuperview()
-            
-            //Hmm, this is glitchy...
+            //self.tableView.reloadData()
         }
         */
         
+        /*
+         //Hmm, this way is glitchy too...
+         if (checklistItems[indexPath.row] == "Receiving Signature." || checklistItems[indexPath.row] == "Release Signature.") {
+         cell.checkbox.removeFromSuperview()
+         }
+         */
+                
         
         return cell
     }
     
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //Examine the final cell...
-        if (indexPath.row == checklistItems.count-1) {
-            print("LASTO!!!")
-            //Perform a segue...
-        }
+        print(checklistItems[indexPath.row])
         
+        switch (checklistItems[indexPath.row]) {
+            case "Release Signature.":
+                performSegue(withIdentifier: "releaseSigSeg", sender: indexPath)
+            case "Receiving Signature.":
+                performSegue(withIdentifier: "receiveSigSeg", sender: indexPath)
+            default:
+                break
+        }
+    
     }
 
     
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -221,4 +208,39 @@ class ChecklistTableViewController: UITableViewController {
     }
     
 
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
 }

@@ -277,14 +277,26 @@ class SignaturePageViewController: UIViewController, SwiftSignatureViewDelegate 
         let curDate = dateFormatter.string(from: Date())
         dateLabel.text = curDate
         
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.loginAuthorizeDropbox))
         loginAuthorizeDropboxLabel.isUserInteractionEnabled = true
         loginAuthorizeDropboxLabel.addGestureRecognizer(tap)
         
         activityIndicator.isHidden = true
+        
+        //For dimissing keyboard when you tap somewhere outside
+        //Looks for single or multiple taps.
+        let dismissTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignaturePageViewController.dismissKeyboard))
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(dismissTap)
     }
     
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     
     //MARK: Delegate

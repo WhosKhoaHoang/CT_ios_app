@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CT iOS App/ChecklistTableViewController.swift"
+            timestampString = "519096190.956811"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CT_iOS_App.ChecklistTableViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "CT iOS App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khoahoang/Desktop/CT%20iOS%20App/CT%20iOS%20App/ChecklistTableViewController.swift"
+                  timestampString = "519072642.17789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "792">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CT_iOS_App.ChecklistTableViewController.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "CT iOS App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/khoahoang/Desktop/CT%20iOS%20App/CT%20iOS%20App/ChecklistTableViewController.swift"
+                  timestampString = "519072642.187007"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "1551">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

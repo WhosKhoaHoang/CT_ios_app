@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,6 +32,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var chosenCellName = ""
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +45,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         tableView.backgroundColor = UIColor.black
         
+        
+        searchBar.delegate = self
     }
-
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //print("HELLODE!!")
+        searchBar.showsCancelButton = true
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        searchBar.showsCancelButton = false
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -156,11 +172,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //===== I think this method fires before the actual segue occurs!!!! That would make sense... =====
         
-        //if (segue.identifier == "checklistSeg")
-        //. Tell the segue.destination what kind of data to populate the checklist with...
-        //. How to tell? Use some sort of data within this class...
         
-        
+        //If the segue identifier belongs to a segue that goes to some template view controller, then
+        //pass the necessary information to that view controller so the template can be filled accordingly
         
         if (segue.identifier == "checklistSeg") {
             
