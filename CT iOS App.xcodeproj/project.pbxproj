@@ -10,6 +10,7 @@
 		7ED2F47E548B853CC23FC65B /* Pods_CT_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EFD4CA87ABBD087B357A0 /* Pods_CT_iOS_App.framework */; };
 		D01978E91EEC643800BFB8CD /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01978E81EEC643800BFB8CD /* ChecklistTableViewController.swift */; };
 		D01979091EECED4E00BFB8CD /* ChecklistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01979081EECED4E00BFB8CD /* ChecklistItemTableViewCell.swift */; };
+		D073555B1EF5CCE100C2FF11 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073555A1EF5CCE100C2FF11 /* InventoryViewController.swift */; };
 		D07433741EE3BE7D00B03E44 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */; };
 		D07433761EE3BEAC00B03E44 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = D07433751EE3BEAC00B03E44 /* small-check.png */; };
 		D074337C1EE3D46800B03E44 /* SignaturePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */; };
@@ -19,11 +20,13 @@
 		D0EC79BA1ED910430055BA39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EC79B81ED910430055BA39 /* Main.storyboard */; };
 		D0EC79BC1ED910430055BA39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0EC79BB1ED910430055BA39 /* Assets.xcassets */; };
 		D0EC79BF1ED910430055BA39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EC79BD1ED910430055BA39 /* LaunchScreen.storyboard */; };
+		D0EE1EB21EF5CE2800E2CCA5 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1EB11EF5CE2800E2CCA5 /* DataCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D01978E81EEC643800BFB8CD /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 		D01979081EECED4E00BFB8CD /* ChecklistItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItemTableViewCell.swift; sourceTree = "<group>"; };
+		D073555A1EF5CCE100C2FF11 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		D07433751EE3BEAC00B03E44 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check.png"; sourceTree = "<group>"; };
 		D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignaturePageViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		D0EC79BB1ED910430055BA39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0EC79BE1ED910430055BA39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0EC79C01ED910430055BA39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0EE1EB11EF5CE2800E2CCA5 /* DataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		E44EFD4CA87ABBD087B357A0 /* Pods_CT_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CT_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF5EB168522670C86A32596 /* Pods-CT iOS App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CT iOS App.release.xcconfig"; path = "Pods/Target Support Files/Pods-CT iOS App/Pods-CT iOS App.release.xcconfig"; sourceTree = "<group>"; };
 		FD042282D5871F3E9ED3D57A /* Pods-CT iOS App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CT iOS App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CT iOS App/Pods-CT iOS App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,8 +88,10 @@
 				D0EC79B41ED910430055BA39 /* AppDelegate.swift */,
 				D0D3E1EF1EDB9E4C0003CE28 /* ProfileViewController.swift */,
 				D07433731EE3BE7D00B03E44 /* CheckBoxView.swift */,
+				D0EE1EB11EF5CE2800E2CCA5 /* DataCell.swift */,
 				D074337B1EE3D46800B03E44 /* SignaturePageViewController.swift */,
 				D0D3E1CF1EDA69820003CE28 /* HomeViewController.swift */,
+				D073555A1EF5CCE100C2FF11 /* InventoryViewController.swift */,
 				D01979081EECED4E00BFB8CD /* ChecklistItemTableViewCell.swift */,
 				D01978E81EEC643800BFB8CD /* ChecklistTableViewController.swift */,
 				D0EC79B81ED910430055BA39 /* Main.storyboard */,
@@ -233,9 +239,11 @@
 			files = (
 				D01978E91EEC643800BFB8CD /* ChecklistTableViewController.swift in Sources */,
 				D01979091EECED4E00BFB8CD /* ChecklistItemTableViewCell.swift in Sources */,
+				D0EE1EB21EF5CE2800E2CCA5 /* DataCell.swift in Sources */,
 				D0EC79B51ED910430055BA39 /* AppDelegate.swift in Sources */,
 				D0D3E1F01EDB9E4C0003CE28 /* ProfileViewController.swift in Sources */,
 				D0D3E1D01EDA69820003CE28 /* HomeViewController.swift in Sources */,
+				D073555B1EF5CCE100C2FF11 /* InventoryViewController.swift in Sources */,
 				D07433741EE3BE7D00B03E44 /* CheckBoxView.swift in Sources */,
 				D074337C1EE3D46800B03E44 /* SignaturePageViewController.swift in Sources */,
 			);
